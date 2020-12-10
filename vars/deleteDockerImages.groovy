@@ -2,7 +2,7 @@
 import com.wolox.*;
 
 def call(ProjectConfiguration projectConfig) {
-    def reference = projectConfig.dockerConfiguration.reference();
+    def reference = projectConfig.image;
     try {
         sh "docker images --filter 'reference=${reference}*' --format \"{{.Tag}} {{.Repository}}:{{.Tag}}\" | sort -n | sed '\$d' | awk '{ print \$2 }' | xargs --no-run-if-empty docker rmi"
 
