@@ -1,7 +1,7 @@
 # Wolox CI
 
 This a Jenkins library built to make it easier for us at Wolox to configure pipelines without necessarily knowing about Jenkinsfile syntax.
-All our projects are built using a Dockerfile
+All our projects are built using a docker image.
 
 When using this library, your Jenkinsfile should look something like this:
 
@@ -22,8 +22,8 @@ This file looks something like this:
 
 ```
 config:
-  dockerfile: .woloxci/Dockerfile
   project_name: some-rails-project
+  image: alpine
 
 services:
   - mssql
@@ -57,7 +57,7 @@ This file has different sections:
 ## Configuration
 
 The section under the `config` label defines some basic configuration for this project:
-1. The dockerfile that contains the image for the project to run.
+1. The docker image that contains that will used to run the build
 2. The project name.
 
 ## Services

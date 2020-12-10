@@ -1,7 +1,6 @@
 package com.wolox.parser;
 
 import com.wolox.ProjectConfiguration;
-import com.wolox.docker.DockerConfiguration;
 import com.wolox.services.*;
 import com.wolox.steps.*;
 
@@ -25,14 +24,12 @@ class ConfigParser {
         projectConfiguration.services   = parseServices(yaml.services);
 
         // load the dockefile
-        projectConfiguration.dockerfile = parseDockerfile(yaml.config);
+        projectConfiguration.image = parseImage(yaml.config);
 
         // load the project name
         projectConfiguration.projectName = parseProjectName(yaml.config);
 
         projectConfiguration.env = env;
-
-        projectConfiguration.dockerConfiguration = new DockerConfiguration(projectConfiguration: projectConfiguration);
 
         projectConfiguration.timeout = yaml.timeout ?: DEFAULT_TIMEOUT;
 
@@ -103,12 +100,12 @@ class ConfigParser {
         }
     }
 
-    static def parseDockerfile(def config) {
-        if (!config || !config["dockerfile"]) {
-            return "Dockerfile";
+    static def parseImage(def config) {
+        if (!config || !config["image"]) {
+            return "alpine";
         }
 
-        return config["dockerfile"];
+        return config["image"];
     }
 
     static def parseProjectName(def config) {
