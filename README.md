@@ -1,7 +1,7 @@
 # Wolox CI
 
 ---
-> **_Note:_** This repository differ from the upstream project in that, the build here starts based on a docker imgae (`image` property) instead of dockerfile (`dockerfile` property).  see the exmple below.
+> **_Note:_** This repository differ from the upstream project in that, the build here starts based on a docker imgae (`image` property) instead of dockerfile (`dockerfile` property).
 ---
 
 This a Jenkins library built to make it easier for us at Wolox to configure pipelines without necessarily knowing about Jenkinsfile syntax.
@@ -32,11 +32,12 @@ example:
 
 <img src="https://github.com/mhewedy/wolox-ci/raw/use-image-no-dockerfile/etc/pipeline-jenkins-config.png"  width="700px"/>
 
+
 It basically loads the library, clones the target repository and calls `woloxCi` to make its magic.
 As an argument, `woloxCi` receives the path to a configuration yaml file (`.pipeline.yaml`).
 
 
-**2. Save the `.pipeline.yaml` at the root of your project, sample file looks like this:**
+**2. Add the `.pipeline.yaml` at the root of your project, sample file looks like this:**
 
 ```
 config:
@@ -50,6 +51,14 @@ steps:
   test:
     - ./hello-world
 ```
+
+> No `Jenkinsfile` is needed to be part of the soruce code. the only file needed is `.pipeline.yaml`.
+
+This is how it looks to run the above pipeline in the blueocean ui:
+
+<img src="https://github.com/mhewedy/wolox-ci/raw/use-image-no-dockerfile/etc/test-result.png"  width="400px"/>
+
+> Notice the `cleanup` stage has added automatically at the end of the build to cleanup resources.
 
 See example [golang](https://github.com/mhewedy-playground/wolox-ci-examples/tree/golang) and [nodejs](https://github.com/mhewedy-playground/wolox-ci-examples/tree/nodejs) apps.
 
