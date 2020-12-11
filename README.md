@@ -62,6 +62,13 @@ This is how it looks to run the above pipeline in the blueocean ui:
 
 See example [golang](https://github.com/mhewedy-playground/wolox-ci-examples/tree/golang) and [nodejs](https://github.com/mhewedy-playground/wolox-ci-examples/tree/nodejs) apps.
 
+### multi-branch with Jenkins DSL plugin
+Hence the pipeline is created using pipeline script (that reference the `.pipeline.yaml` file) then we cannot use a *Multibranch Pipeline* hence it requires a scm url to scan.
+
+So, I think a Job DSL whould come to the resuce. see https://github.com/jenkinsci/job-dsl-plugin/pull/671
+
+Other option is to use the "Multibranch pipeline" and to keep both the `Jenkinsfile` and `.pipeline.yaml` file in the repository.
+
 ## Documations for `.pipeline.yaml` sections:
 
 ### Configuration
