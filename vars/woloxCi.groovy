@@ -1,6 +1,6 @@
+import com.wolox.ProjectConfiguration
 @Library('wolox-ci')
-import com.wolox.parser.ConfigParser;
-import com.wolox.*;
+import com.wolox.parser.ConfigParser
 
 def call(String yamlName) {
     def yaml = readYaml file: yamlName;
@@ -27,7 +27,9 @@ def call(String yamlName) {
     // we execute the top level closure so that the cascade starts.
     try {
         closure([:]);
-    } finally{
-        deleteDockerImages(projectConfig);
+    } finally {
+        stage("cleanup") {
+            deleteDockerImages(projectConfig);
+        }
     }
 }
