@@ -1,7 +1,7 @@
 # Wolox CI
 
 ---
-> **_Note:_** This repository differ from the upstream project in that, the build here starts based on a docker imgae (`image` property) instead of dockerfile (`dockerfile` property).
+> # Development has been moved to a new repository https://github.com/ci-pipeline/ci-pipeline
 ---
 
 This a Jenkins library built to make it easier for us at Wolox to configure pipelines without necessarily knowing about Jenkinsfile syntax.
